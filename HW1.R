@@ -34,7 +34,6 @@ summary(fm2)
 
 #####2. multivariate regression to the effects obtained from successive orthogonalization
 a<-rep(1, times=10)
-Z<-
 Z<-cbind(a,0,0,0)
 Z[,2]<-x[,1]-Z[,1]*(x[,1]%*%Z[,1])/(Z[,1]%*%Z[,1])
 Z[,3]<-x[,2]-Z[,1]*(x[,2]%*%Z[,1])/(Z[,1]%*%Z[,1])-Z[,2]*(x[,2]%*%Z[,2])/(Z[,2]%*%Z[,2])
