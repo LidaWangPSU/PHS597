@@ -1,5 +1,7 @@
 library(pls)
 
+#Partial Least Square
+
 #Construct a positive definite matrix as the covariance matrix
 a<-matrix(c(1,-0.2,0.1,
             0,1,0.2,
