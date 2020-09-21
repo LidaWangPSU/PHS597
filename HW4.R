@@ -30,8 +30,7 @@ b<-ginv(t(x)%*%x)%*%(t(x)%*%y)
 yhat<-apply(x%*%b,1,which.max)
 
 ###Only get cluster1 and 3
-abline
-###
+###abline
 b0<-b[,1]-b[,3]
 abline(a=-b0[1]/b0[2],b=-b0[1]/b0[3],col="grey",lty=2)
 
