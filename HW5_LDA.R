@@ -30,7 +30,6 @@ pi<-c(pi1,pi2,pi3)
 Sigma1<-1/(n-3)*((t(a1)-mu11)%*%(a1-mu11)+(t(a2)-mu22)%*%(a2-mu22)+(t(a3)-mu33)%*%(a3-mu33))
 
 
-###standard methods
 ###discriminant function
 #dis_func<-function(x,k,sigma,mu,pi){
 #dk<-t(x)%*%ginv(sigma)%*%mu[k,]-0.5*t(mu[k,])%*%ginv(sigma)%*%mu[k,]+log(pi[k])
