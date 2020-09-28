@@ -20,8 +20,8 @@ mu3<-c(3,3)
 
 
 a1q<-mvrnorm(50,mu1,Sigma1)
-a2q<-mvrnorm(100,mu2,Sigma2)
-a3q<-mvrnorm(70,mu3,Sigma3)
+a2q<-mvrnorm(50,mu2,Sigma2)
+a3q<-mvrnorm(50,mu3,Sigma3)
 
 mu1q=colMeans(a1q)
 mu2q=colMeans(a2q)
@@ -66,10 +66,10 @@ mu3new=colMeans(a3new)
 mu_new<-rbind(mu1new,mu2new,mu3new)
 
 
-
+###Standard methods
 
 ###Plots in the sphering data
-plot(a1new,xlim=c(-20,20),ylim=c(-20,20),col="red")
+plot(a1new,xlim=c(-5,5),ylim=c(-5,5),col="red")
 points(a2new,col="blue")
 points(a3new,col="green")
 title(main="Plots for the sphering data")
