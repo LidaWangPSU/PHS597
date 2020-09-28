@@ -66,7 +66,7 @@ mu3new=colMeans(a3new)
 mu_new<-rbind(mu1new,mu2new,mu3new)
 
 
-###Standard methods
+
 
 ###Plots in the sphering data
 plot(a1new,xlim=c(-20,20),ylim=c(-20,20),col="red")
