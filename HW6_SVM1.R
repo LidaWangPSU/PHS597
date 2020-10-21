@@ -3,8 +3,8 @@ library(mvtnorm)
 library(e1071)
 library(quadprog)
 ###Simulate cluster
-a<-matrix(c(0.5,0.1,
-            0,0.5),2,2)
+a<-matrix(c(0.2,0.1,
+            0,0.2),2,2)
 Sigma<-a%*%t(a)
 
 set.seed(6)
@@ -14,20 +14,18 @@ a1<-mvrnorm(100,mu1,Sigma)
 a2<-mvrnorm(100,mu2,Sigma)
 data1<-rbind(cbind(rep(1,100),a1),cbind(rep(-1,100),a2))
 colnames(data1)<-c("group","x1","x2")
-plot(data1[1:100,2:3],xlim=c(-2,4),ylim=c(-2,4),col="red",xlab = "x1",ylab="x2")
-points(data1[101:200,2:3],col="blue")
 
 
 svm_1<-function(data){
-  data<-data1
+  #data<-data1
   err<-1e-10
   X<-data[,2:3]
   y<-data[,1]
   n<-nrow(data)
-  Dmat<-t(sapply(1:n, function(i) y[i]*t(X)[,i]))%*%(sapply(1:n, function(i) y[i]*t(X)[,i]))
+  Dmat<-diag(y)%*%X%*%t(X)%*%diag(y)+ err*diag(1,n)
   dvec<-as.matrix(rep(1,n))
   Amat<-t(rbind(matrix(y,nrow=1),diag(1,nrow=n)))
-  sol<-solve.QP(Dmat=Dmat+err*diag(1,n),dvec=dvec,Amat=Amat,meq=1,factorized = F)
+  sol<-solve.QP(Dmat=Dmat,dvec=dvec,Amat=Amat,meq=1,factorized = F)
   alpha<-sol$solution
   beta<-t(X)%*%matrix(alpha*y,nrow =n)
   beta0<--0.5*(min(X[y==1,]%*%beta)+max(X[y==-1,]%*%beta))
@@ -38,6 +36,9 @@ svm_1<-function(data){
   cat("beta0 =",beta0,"\n")
   cat("beta = ",beta,"\n")
 }
+
+plot(data1[1:100,2:3],xlim=c(-2,4),ylim=c(-2,4),col="red",xlab = "x1",ylab="x2")
+points(data1[101:200,2:3],col="blue")
 svm_1(data1)
 
 ###compare with svm
