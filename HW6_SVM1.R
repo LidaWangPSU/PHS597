@@ -3,8 +3,8 @@ library(mvtnorm)
 library(e1071)
 library(quadprog)
 ###Simulate cluster
-a<-matrix(c(0.2,0.1,
-            0,0.2),2,2)
+a<-matrix(c(0.5,0.1,
+            0,0.5),2,2)
 Sigma<-a%*%t(a)
 
 set.seed(6)
