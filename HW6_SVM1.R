@@ -24,7 +24,7 @@ svm_1<-function(data){
   n<-nrow(data)
   Dmat<-diag(y)%*%X%*%t(X)%*%diag(y)+ err*diag(1,n)
   dvec<-as.matrix(rep(1,n))
-  Amat<-t(rbind(matrix(y,nrow=1),diag(1,nrow=n)))
+  Amat<-cbind(as.matrix(y),diag(1,nrow=n))
   sol<-solve.QP(Dmat=Dmat,dvec=dvec,Amat=Amat,meq=1,factorized = F)
   alpha<-sol$solution
   beta<-t(X)%*%matrix(alpha*y,nrow =n)
