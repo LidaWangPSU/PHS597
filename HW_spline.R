@@ -33,7 +33,6 @@ points(X,fm2$fitted.values,col="green")
 
 ###smoothing
 fm3<-smooth.spline(X,Y)
-fm3$lambda
 points(fm3$x,fm3$y,col="yellow")
 
 ###Bspline
